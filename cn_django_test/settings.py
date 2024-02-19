@@ -128,31 +128,31 @@ OAUTHLIB_INSECURE_TRANSPORT = '1'
 
 CORS_ALLOW_HEADERS = "*"
 
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Asia/Kolkata'
+# CELERY_ACCEPT_CONTENT = ['application/json']
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_RESULT_SERIALIZER = 'json'
+# CELERY_TIMEZONE = 'Asia/Kolkata'
 
 
-CELERY_MAX_TASKS_PER_CHILD = 1
+# CELERY_MAX_TASKS_PER_CHILD = 1
 
-REDIS_URL = 'redis://:SdAcJvHk@123@ec2-3-110-193-173.ap-south-1.compute.amazonaws.com:6379'
-CELERY_BROKER_URL = REDIS_URL
-CELERY_RESULT_BACKEND = REDIS_URL
+# REDIS_URL = 'redis://:SdAcJvHk@123@ec2-3-110-193-173.ap-south-1.compute.amazonaws.com:6379'
+# CELERY_BROKER_URL = REDIS_URL
+# CELERY_RESULT_BACKEND = REDIS_URL
 
 
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": REDIS_URL,
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "CONNECTION_POOL_KWARGS": {
-                "ssl_cert_reqs": None
-            },
-        }
-    }
-}
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django_redis.cache.RedisCache",
+#         "LOCATION": REDIS_URL,
+#         "OPTIONS": {
+#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#             "CONNECTION_POOL_KWARGS": {
+#                 "ssl_cert_reqs": None
+#             },
+#         }
+#     }
+# }
 # CELERY_BROKER_URL = "redis://localhost:6379/"
 # CELERY_RESULT_BACKEND = 'redis://localhost:6379/'
 # CELERY_TASK_RESULT_EXPIRES = 0
