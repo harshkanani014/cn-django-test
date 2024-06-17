@@ -7,7 +7,7 @@ from decouple import config
 def index(request):
     # test_task.delay()
     large_list = []
-    for i in range(1000): 
+    for i in range(1000):   
         large_list.append("hello world" * 100)  # Create a large string and append to the list
 
     total_length = sum(len(s) for s in large_list)
