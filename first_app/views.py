@@ -7,9 +7,9 @@ from decouple import config
 def index(request):
     # test_task.delay()
     large_list = []
-    for i in range(10000): 
-        large_list.append("hello world" * 1000)  # Create a large string and append to the list
+    for i in range(1000): 
+        large_list.append("hello world" * 100)  # Create a large string and append to the list
 
     total_length = sum(len(s) for s in large_list)
 
-    return HttpResponse(f'HHM.....Hello World! This is CN Django Test.By - Harsh Kanani aa.....web hooks test harsh kanani webhook testing 123 - harsh1278 {total_length} {config("TEST_VAR")}')
+    return HttpResponse(f'HHM.....Hello World! This is CN Django Test.By - Harsh Kanani aa.....web hooks test harsh kanani webhook testing 123 - harsh1278 {total_length}')
