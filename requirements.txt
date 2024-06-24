@@ -8,6 +8,7 @@ click-plugins==1.1.1
 click-repl==0.3.0
 Django==4.2.3
 django-redis==5.4.0
+gunicorn==21.2.0
 kombu==5.3.5
 packaging==23.2
 prompt-toolkit==3.0.43
