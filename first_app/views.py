@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from decouple import config
 # Create your views here.
 
-def index(request):
+def index(request): 
     # test_task.delay()
     large_list = []
     for i in range(100):   
