@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b3r(d7&$-%9p9hj8tyznst!%h-gko$h9xii@+y25&ty47mp^dm'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-b3r(d7&$-%9p9hj8tyznst!%h-gko$h9xii@+y25&ty47mp^dm')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [h for h in os.environ.get("ALLOWED_HOSTS", "").split(",") if h] or ['*']
 
 
 # Application definition
@@ -136,9 +136,9 @@ CELERY_TIMEZONE = 'Asia/Kolkata'
 
 CELERY_MAX_TASKS_PER_CHILD = 1 
 
-REDIS_URL = 'redis://:harsh@ec2-13-201-66-16.ap-south-1.compute.amazonaws.com'
-CELERY_BROKER_URL = REDIS_URL
-CELERY_RESULT_BACKEND = REDIS_URL
+REDIS_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379/0')
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', REDIS_URL)
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND', REDIS_URL)
 
 
 CACHES = {
@@ -146,25 +146,7 @@ CACHES = {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": REDIS_URL,
         "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "CONNECTION_POOL_KWARGS": {
-                "ssl_cert_reqs": None
-            },
-        }
-    }
-}
-CELERY_BROKER_URL = "redis://localhost:6379/"
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/'
-CELERY_TASK_RESULT_EXPIRES = 0
-
-
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/",
-        "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient"
-        },
-        "KEY_PREFIX": "example"
+        }
     }
 }
